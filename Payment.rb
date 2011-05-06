@@ -23,7 +23,7 @@ class Sms
     d = {
       'From' => CALLER_ID,
       'To' => Sms.normalize_number(to_phone_number),
-      'Body' => "Hey! You rock dude!"
+      'Body' => "You sent: #{params[:body]} !"
     }
   
     begin
@@ -52,7 +52,12 @@ get '/Sms' do
 end 
   
 
-get '/' do
-  "It works"
+post '/' do
+  content_type 'text/xml'
+  "<Response>
+  <Sms>
+  This is a test #{resp}
+  </Sms>
+  </Response>"
 end   
 
