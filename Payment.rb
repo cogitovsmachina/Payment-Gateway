@@ -12,30 +12,28 @@ API_VERSION = '2010-04-01'
 # base URL of this application
 BASE_URL = "http://woojin.heroku.com"
 
-CALLER_ID = '415237-4431'
+CALLER_ID = '4152374431'
 
 class Sms
   def self.normalize_number(n)
     "+1" + n.delete(' (\-)') if n
   end
-  
+
   def self.send(to_phone_number, body)
     d = {
       'From' => CALLER_ID,
       'To' => Sms.normalize_number(to_phone_number),
-      'Body' => "You sent: #{params[:body]} !"
+      'Body' => ("You sent: #{d.Body} !")
     }
-  
+
     begin
-      account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
-      url = "/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages"
-      puts url
-      puts d.inspect
-      resp = account.request(url, 'POST', d)
+      twilio = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
+      resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
+      'POST',
+      t) 
       resp.error! unless resp.kind_of? Net::HTTPSuccess
-      return true
     rescue StandardError => bang
-      # todo: log it somewhere!
+      #This area will be called if an error happens with the Twilio API
       puts bang.inspect
       return false
     end    
@@ -50,14 +48,18 @@ get '/Sms' do
   </Sms>
   </Response>"
 end 
-  
 
-post '/' do
+
+get '/' do
   content_type 'text/xml'
   "<Response>
   <Sms>
-  This is a test #{resp}
+  You sent this 
   </Sms>
   </Response>"
-end   
+  
+end
+
+
+
 
