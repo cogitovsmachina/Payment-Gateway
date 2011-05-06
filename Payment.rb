@@ -18,7 +18,7 @@ account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 d = {
     'From' => CALLER_ID,
     'To' => '7073975714',
-    'Body' => 'We have to start developing EmailSender in Android!!',
+    'Body' => 'Twilio scales!!!',
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
     'POST', d)
@@ -35,12 +35,15 @@ get '/Sms' do
 end 
 
 
-post '/' do  
-    
-end 
+get '/' do  
+  #  "Testing ..."  
+  content_type 'text/xml'
 
-get '/' do
-  
+  "<Response>
+  <Say>
+  This is a test 
+  </Say>
+  </Response>"
 end
 
 
