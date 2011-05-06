@@ -32,6 +32,8 @@ class Sms
       'POST',
       t) 
       resp.error! unless resp.kind_of? Net::HTTPSuccess
+      puts "code: %s\nbody: %s" % [resp.code, resp.body]
+      
     rescue StandardError => bang
       #This area will be called if an error happens with the Twilio API
       puts bang.inspect
