@@ -2,45 +2,31 @@ require 'rubygems'
 require 'sinatra'
 require 'twiliolib'
 
+# Twilio REST API version
+API_VERSION = '2010-04-01'
 
+# Twilio AccountSid and AuthToken
 ACCOUNT_SID = 'AC960db3ae4c368e1a6be0fe425af45aab'
 ACCOUNT_TOKEN = '622a8488bfc1f4855698d424d9b5ffdd'
 
-# version of the Twilio REST API to use
-API_VERSION = '2010-04-01'
+# Outgoing Caller ID previously validated with Twilio
+CALLER_ID = '4152374431';
 
-# base URL of this application
-BASE_URL = "http://woojin.heroku.com"
+# Create a Twilio REST account object using your Twilio account ID and token
+account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 
-CALLER_ID = '4152374431'
-
-class Sms
-  def self.normalize_number(n)
-    "+1" + n.delete(' (\-)') if n
-  end
-
-  def self.send(to_phone_number, body)
-    d = {
-      'From' => CALLER_ID,
-      'To' => Sms.normalize_number(to_phone_number),
-      'Body' => ("You sent: #{d.Body} !")
-    }
-
-    begin
-      twilio = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
-      resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
-      'POST',
-      t) 
-      resp.error! unless resp.kind_of? Net::HTTPSuccess
-      puts "code: %s\nbody: %s" % [resp.code, resp.body]
-      
-    rescue StandardError => bang
-      #This area will be called if an error happens with the Twilio API
-      puts bang.inspect
-      return false
-    end    
-  end
-end
+# ===========================================================================
+# 1. Initiate a new outbound call to 415-555-1212
+#    uses a HTTP POST
+d = {
+    'From' => CALLER_ID,
+    'To' => '7073975714',
+    'Body' => 'Twilio scales!',
+}
+resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
+    'POST', d)
+resp.error! unless resp.kind_of? Net::HTTPSuccess
+puts "code: %s\nbody: %s" % [resp.code, resp.body]
 
 get '/Sms' do
   content_type 'text/xml'
@@ -52,8 +38,8 @@ get '/Sms' do
 end 
 
 
-get '/' do
-  content_type 'text/xml'
+get '/' do  
+  "Testing ..."
 #  "<Response>
 #  <Sms>
 #  You sent this #{} 
