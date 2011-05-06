@@ -35,8 +35,11 @@ get '/Sms' do
 end 
 
 
-get '/' do  
- 
+post '/' do  
+    
+end 
+
+get '/' do
   
 end
 
