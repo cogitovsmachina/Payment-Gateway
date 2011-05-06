@@ -10,7 +10,7 @@ ACCOUNT_TOKEN = '622a8488bfc1f4855698d424d9b5ffdd'
 API_VERSION = '2010-04-01'
 
 # base URL of this application
-BASE_URL = "http://"
+BASE_URL = "http://woojin.heroku.com"
 
 CALLER_ID = '415237-4431'
 
