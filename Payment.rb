@@ -15,9 +15,6 @@ CALLER_ID = '4152374431';
 # Create a Twilio REST account object using your Twilio account ID and token
 account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 
-# ===========================================================================
-# 1. Initiate a new outbound call to 415-555-1212
-#    uses a HTTP POST
 d = {
     'From' => CALLER_ID,
     'To' => '7073975714',
@@ -39,12 +36,7 @@ end
 
 
 get '/' do  
-  "Testing ..."
-#  "<Response>
-#  <Sms>
-#  You sent this #{} 
-#  </Sms>
-#  </Response>"
+ 
   
 end
 
