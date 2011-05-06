@@ -21,7 +21,7 @@ account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 d = {
     'From' => CALLER_ID,
     'To' => '7073975714',
-    'Body' => 'Twilio scales!',
+    'Body' => 'Twilio scales!!!',
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
     'POST', d)
