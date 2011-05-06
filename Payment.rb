@@ -52,11 +52,11 @@ end
 
 get '/' do
   content_type 'text/xml'
-  "<Response>
-  <Sms>
-  You sent this 
-  </Sms>
-  </Response>"
+#  "<Response>
+#  <Sms>
+#  You sent this #{} 
+#  </Sms>
+#  </Response>"
   
 end
 
