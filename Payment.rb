@@ -40,9 +40,9 @@ get '/' do
   content_type 'text/xml'
 
   "<Response>
-  <Say>
-  This is a test 
-  </Say>
+  <Sms>
+  It Works!
+  </Sms>
   </Response>"
 end
 
