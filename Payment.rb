@@ -14,11 +14,10 @@ CALLER_ID = '4152374431';
 
 # Create a Twilio REST account object using your Twilio account ID and token
 account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
-
 d = {
     'From' => CALLER_ID,
-    'To' => '7073975714',
-    'Body' => 'Twilio scales!!!',
+    'To' => '7073975714', 
+    'Body' => 'Twilio+Sinatra+Heroku = world domination!'
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
     'POST', d)
@@ -35,15 +34,8 @@ get '/Sms' do
 end 
 
 
-get '/' do  
-  #  "Testing ..."  
-  content_type 'text/xml'
-
-  "<Response>
-  <Sms>
-  It Works!
-  </Sms>
-  </Response>"
+get '/' do
+    "Sebastian, Thank you for your payment! Code: 1234"
 end
 
 
