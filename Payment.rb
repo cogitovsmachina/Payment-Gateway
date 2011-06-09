@@ -18,7 +18,7 @@ d = {
     'From' => CALLER_ID,
 #    'To' => '7073975714', 
      'To' => '+5215530107735', 
-    'Body' => 'Carnal, !'
+    'Body' => 'Carnal, nosotros rockeamos duro :), dejemos de ser empleados de otros :D !'
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
     'POST', d)
