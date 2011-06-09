@@ -17,8 +17,8 @@ account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 d = {
     'From' => CALLER_ID,
 #    'To' => '7073975714', 
-     'To' => '+5215521022584', 
-    'Body' => 'Twilio+Sinatra+Heroku = world domination!'
+     'To' => '+5215513889243', 
+    'Body' => 'Soy tan geek que te mando un SMS diciendo que te quiero mucho via Twilio!'
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
     'POST', d)
@@ -36,7 +36,7 @@ end
 
 
 get '/' do
-    "It Works!"
+    "SMS Sent to Mexico :)!"
 end
 
 
