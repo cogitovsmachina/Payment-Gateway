@@ -16,8 +16,8 @@ CALLER_ID = '4152374431';
 account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
 d = {
     'From' => CALLER_ID,
-    'To' => '7073975714', 
-#     'To' => '+525521022584', 
+#    'To' => '7073975714', 
+     'To' => '+5215521022584', 
     'Body' => 'Twilio+Sinatra+Heroku = world domination!'
 }
 resp = account.request("/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/SMS/Messages",
